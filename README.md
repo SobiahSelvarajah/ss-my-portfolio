@@ -38,7 +38,7 @@ Tools:
 - Vercel
 
 
-✨ Features
+## ✨ Features
 
 - Interactive project cards with expandable project details
 - Smooth UI animations
@@ -48,7 +48,7 @@ Tools:
 - Optimised performance using modern React features
 
 
-📂 Project Structure
+## 📂 Project Structure
 src
  ├── app          # Next.js app router pages
  ├── components   # Reusable UI components
@@ -57,10 +57,10 @@ src
  └── styles       # Global styling
 
 
-🛠️ Getting Started
+## 🛠️ Getting Started
 
 Clone the repository and install dependencies:
-    git clone https://github.com/yourusername/portfolio.git
+    git clone https://github.com/SobiahSelvarajah/ss-my-portfolio
     cd portfolio
     npm install
     npm run dev
