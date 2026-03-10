@@ -6,7 +6,7 @@ Built with a focus on performance, clean architecture and engaging user experien
 
 ## 🚀 Live Demo
 
-🔗 https://yourportfolio.com
+🔗 portfolio link
 
 
 ## 🧑‍💻 About the Project
@@ -61,7 +61,7 @@ src
 
 Clone the repository and install dependencies:
     git clone https://github.com/SobiahSelvarajah/ss-my-portfolio
-    cd portfolio
+    cd ss-my-portfolio
     npm install
     npm run dev
 

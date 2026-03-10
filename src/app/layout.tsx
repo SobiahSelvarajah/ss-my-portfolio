@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/navbar";
+import StarBackground from "@/components/star-background";
 import "./globals.css";
 
 
 export const metadata: Metadata = {
   title: "Sobiah's Portfolio",
-  description: "Includes main projects, ",
+  description: "Includes main projects, skillset and resume",
 };
 
 export default function RootLayout({
@@ -16,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <StarBackground />
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>
