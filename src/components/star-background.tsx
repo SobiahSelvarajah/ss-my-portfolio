@@ -23,7 +23,7 @@ export default function StarBackground() {
         canvas.height = window.innerHeight;
 
         // no. of stars on screen at once
-        const starCount = 120;
+        const starCount = 200
         
         // generate an array of star objects
         const stars = Array.from({ length: starCount }).map(() => ({
@@ -40,11 +40,35 @@ export default function StarBackground() {
             radius: Math.random() * 1.2,
             //
             // star brightness
-            opacity: Math.random() * 0.5 + 0.2,
+            opacity: Math.random() * 0.5 + 0.3,
             //
             // how fast stars twinkle
-            twinkleSpeed: Math.random() * 0.03 + 0.01
+            twinkleSpeed: Math.random() * 0.05 + 0.01
         }));
+
+        // shooting star
+        let shootingStar = {
+            active: false,
+            x: 0,
+            y: 0,
+            length: 250,
+            speed: 10
+        }
+
+        function spawnShootingStar() {
+            shootingStar.active = true
+
+            // start slightly off screen
+            shootingStar.x = -200
+
+            // appear in upper half of sky
+            shootingStar.y = Math.random() * canvas.height * 0.5
+        }
+
+        setInterval(() => {
+            spawnShootingStar()
+        }, 15000)
+
 
         // animation loop
         function draw() {
@@ -59,7 +83,7 @@ export default function StarBackground() {
             // animate stars
             // loop through every star
             stars.forEach((star) => {
-
+                
                 // twinkle - randomly increase or decrease brightness
                 star.opacity += (Math.random() - 0.5) * star.twinkleSpeed * 2
 
@@ -79,6 +103,37 @@ export default function StarBackground() {
                 ctx.fill()
             });
 
+            if (shootingStar.active) {
+
+                const tailX = shootingStar.x + shootingStar.length
+                const tailY = shootingStar.y + shootingStar.length * 0.3
+
+                const gradient = ctx.createLinearGradient(
+                    shootingStar.x,
+                    shootingStar.y,
+                    tailX,
+                    tailY
+                )
+
+                gradient.addColorStop(0, "rgba(255,255,255,0.9)")
+                gradient.addColorStop(1, "rgba(255,255,255,0)")
+
+                ctx.beginPath()
+                ctx.moveTo(shootingStar.x, shootingStar.y)
+                ctx.lineTo(tailX, tailY)
+
+                ctx.strokeStyle = gradient
+                ctx.lineWidth = 2
+                ctx.stroke()
+
+                shootingStar.x += shootingStar.speed
+                shootingStar.y += shootingStar.speed * 0.3
+
+                if (shootingStar.x > canvas.width + 300) {
+                    shootingStar.active = false
+                }
+            }
+
             // loop animation
             requestAnimationFrame(draw)
         }
@@ -86,17 +141,19 @@ export default function StarBackground() {
         // start animation
         draw()
 
+        // when browser resizes
         window.addEventListener("resize", () => {
+
+            // adjust background to keep background full size
             canvas.width = window.innerWidth
             canvas.height = window.innerHeight
         })
-
-
     }, [])
 
 
-
     return (
+        // render canvas
+        // return jsx
         <canvas ref={canvasRef} className="fixed inset-0 -z-10" />
     )
 }

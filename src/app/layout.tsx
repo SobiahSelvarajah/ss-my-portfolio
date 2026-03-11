@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StarBackground />
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
       </body>
     </html>
