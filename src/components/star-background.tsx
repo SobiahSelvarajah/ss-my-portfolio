@@ -23,7 +23,7 @@ export default function StarBackground() {
         canvas.height = window.innerHeight;
 
         // no. of stars on screen at once
-        const starCount = 200
+        const starCount = 300
         
         // generate an array of star objects
         const stars = Array.from({ length: starCount }).map(() => ({
@@ -37,10 +37,10 @@ export default function StarBackground() {
             y: Math.random() * canvas.height,
             //
             // star size
-            radius: Math.random() * 1.2,
+            radius: Math.random() * 1.5,
             //
             // star brightness
-            opacity: Math.random() * 0.5 + 0.3,
+            opacity: Math.random() * 1.0 + 0.3,
             //
             // how fast stars twinkle
             twinkleSpeed: Math.random() * 0.05 + 0.01
@@ -51,8 +51,8 @@ export default function StarBackground() {
             active: false,
             x: 0,
             y: 0,
-            length: 150,
-            speed: 15
+            length: 250,
+            speed: 35
         }
 
         function spawnShootingStar() {
