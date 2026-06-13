@@ -23,7 +23,7 @@ export default function StarBackground() {
         canvas.height = window.innerHeight;
 
         // no. of stars on screen at once
-        const starCount = 300
+        const starCount = 1000
         
         // generate an array of star objects
         const stars = Array.from({ length: starCount }).map(() => ({
@@ -37,7 +37,7 @@ export default function StarBackground() {
             y: Math.random() * canvas.height,
             //
             // star size
-            radius: Math.random() * 1.5,
+            radius: Math.random() * 1.3,
             //
             // star brightness
             opacity: Math.random() * 1.0 + 0.3,
@@ -67,7 +67,7 @@ export default function StarBackground() {
 
         setInterval(() => {
             spawnShootingStar()
-        }, 15000)
+        }, 10000)
 
 
         // animation loop
