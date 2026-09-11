@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar";
-import StarBackground from "@/components/star-background";
+import Navbar from "@/components/layout/Navbar";
+import StarBackground from "@/components/layout/StarBackground";
 import "./globals.css";
 
 export const metadata: Metadata = {

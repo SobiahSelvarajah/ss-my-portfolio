@@ -156,5 +156,5 @@ export default function StarBackground() {
         // render canvas
         // return jsx
         <canvas ref={canvasRef} className="fixed inset-0 -z-10" />
-    )
+    );
 }
