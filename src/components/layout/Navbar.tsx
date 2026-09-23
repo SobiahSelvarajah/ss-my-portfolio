@@ -9,10 +9,10 @@ const navLinks = [
 export default function Navbar() {
     return (
         <>
-            {/* DESKTOP / TABLET SIDEBAR */}
+            {/* DESKTOP SIDEBAR */}
             <nav 
                 aria-label="Desktop navigation"
-                className="fixed inset-y-0 left-0 z-50 hidden w-64 flex-col justify-between bg-white/5 backdrop-blur-md md:flex"
+                className="fixed inset-y-0 left-0 z-50 hidden w-64 flex-col justify-between bg-white/5 backdrop-blur-md lg:flex"
             >
 
                 {/* glow divider */}
@@ -43,9 +43,10 @@ export default function Navbar() {
                 <div className="px-10 pb-10 text-white/60"></div>
             </nav>
 
+            {/* MOBILE & TABLET SIDEBAR */}
             <nav
                 aria-label="Mobile navigation"
-                className="fixed inset-x-0 top-0 z-50 flex flex-col bg-white/5 px-6 py-6 backdrop-blur-md md:hidden"
+                className="fixed inset-x-0 top-0 z-50 flex flex-col bg-white/5 px-6 py-6 backdrop-blur-md lg:hidden"
             >
                 <a 
                     href="#home"

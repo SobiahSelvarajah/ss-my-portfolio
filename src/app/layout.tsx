@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <StarBackground />
         <Navbar />
-        <main className="ml-64 px-12 py-16">
+        <main className="lg:ml-64">
           {children}
         </main>
       </body>
