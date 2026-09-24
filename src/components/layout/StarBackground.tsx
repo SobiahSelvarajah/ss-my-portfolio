@@ -47,7 +47,7 @@ export default function StarBackground() {
         }));
 
         // shooting star
-        let shootingStar = {
+        const shootingStar = {
             active: false,
             x: 0,
             y: 0,
