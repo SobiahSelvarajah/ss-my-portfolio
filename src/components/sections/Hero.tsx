@@ -16,7 +16,7 @@ export default function Hero() {
                     Hi, I&apos;m Sobiah.
                 </h1>
                 <p className="mt-6 max-w-2xl text-sm leading-6 tracking-[0.01em] text-white/70 sm:mt-8 sm:text-xl sm:leading-8">
-                    I build thoughtful and responsive web applications using React,
+                    I build polished and responsive web applications using React,
                     Next.js and TypeScript.
                 </p>
 
