@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
+import ProjectFragments from "./ProjectFragments";
 
 type ProjectStarProps = {
     project: Project;
@@ -13,12 +18,49 @@ export default function ProjectStar({
     isActive,
     onToggle,
 }: ProjectStarProps) {
+    const projectRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        if (!isActive) return;
+
+        const scrollTimer = window.setTimeout(() => {
+            const project = projectRef.current;
+
+            if (!project) return;
+
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            project.scrollIntoView({
+                behavior: prefersReducedMotion ? "auto" : "smooth",
+                block: "center",
+            });
+        }, 500);
+
+        return () => window.clearTimeout(scrollTimer);
+    }, [isActive]);
+
+
     return (
-        <article className="flex flex-col items-center">
+        <motion.article
+            ref={projectRef}
+            layout="size"
+            transition={{
+                layout: {
+                    duration: 0.65,
+                    ease: [0.22, 1, 0.36, 1],
+                },
+            }}
+            className={`relative flex w-full flex-col items-center ${
+                isActive ? "lg:min-h-136" : "lg:min-h-0"
+            }`}
+        >
             <button
                 type="button"
                 aria-label={`${isActive ? "Close" : "Explore"} ${project.name}`}
                 aria-expanded={isActive}
+                aria-controls={`${project.id}-fragments`}
                 onClick={onToggle}
                 className="group flex flex-col items-center rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950"
             >
@@ -83,6 +125,11 @@ export default function ProjectStar({
             <p className="mt-3 max-w-md text-center text-sm leading-6 text-white/60">
                 {project.shortSummary}
             </p>
-        </article>
+
+            <ProjectFragments
+                projectId={project.id}
+                isActive={isActive}
+            />
+        </motion.article>
     );
 }
