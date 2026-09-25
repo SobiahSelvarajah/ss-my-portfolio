@@ -1,8 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import ProjectStar from "../projects/ProjectStar";
 import { projects } from "@/data/projects";
 
 
 export default function Projects() {
+    const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+
     return (
         <section
             id="projects"
@@ -24,6 +29,12 @@ export default function Projects() {
                         <ProjectStar 
                             key={project.id} 
                             project={project} 
+                            isActive={activeProjectId === project.id}
+                            onToggle={() =>
+                                setActiveProjectId((currentId) =>
+                                    currentId === project.id ? null : project.id
+                                )
+                            }
                         />
                     ))}
                 </div>
