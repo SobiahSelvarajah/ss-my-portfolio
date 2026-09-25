@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Project } from "@/data/projects";
+import type { ProjectFragmentId } from "@/data/projectFragments";
 import ProjectFragments from "./ProjectFragments";
+import ProjectDetails from "./ProjectDetails";
 
 type ProjectStarProps = {
     project: Project;
@@ -18,7 +20,32 @@ export default function ProjectStar({
     isActive,
     onToggle,
 }: ProjectStarProps) {
+    const [selectedFragment, setSelectedFragment] = 
+        useState<ProjectFragmentId | null>(null);
+
     const projectRef = useRef<HTMLElement>(null);
+
+    const handleToggle = () => {
+        if (isActive) {
+            setSelectedFragment(null);
+        }
+
+        onToggle();
+    };
+
+    useEffect(() => {
+        if (!selectedFragment) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setSelectedFragment(null);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [selectedFragment]);
 
     useEffect(() => {
         if (!isActive) return;
@@ -61,7 +88,7 @@ export default function ProjectStar({
                 aria-label={`${isActive ? "Close" : "Explore"} ${project.name}`}
                 aria-expanded={isActive}
                 aria-controls={`${project.id}-fragments`}
-                onClick={onToggle}
+                onClick={handleToggle}
                 className="group flex flex-col items-center rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950"
             >
                 <span className="relative flex size-52 items-center justify-center rounded-full sm:size-64">
@@ -129,7 +156,18 @@ export default function ProjectStar({
             <ProjectFragments
                 projectId={project.id}
                 isActive={isActive}
+                selectedFragment={selectedFragment}
+                onSelectFragment={setSelectedFragment}
             />
+            <AnimatePresence>
+                {selectedFragment && (
+                    <ProjectDetails 
+                        projectName={project.name}
+                        selectedFragment={selectedFragment}
+                        onClose={() => setSelectedFragment(null)}
+                    />
+                )}
+            </AnimatePresence>
         </motion.article>
     );
 }
