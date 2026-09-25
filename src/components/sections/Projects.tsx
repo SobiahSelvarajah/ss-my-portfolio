@@ -1,10 +1,12 @@
+import ProjectStar from "../projects/ProjectStar";
+import { projects } from "@/data/projects";
 
 
 export default function Projects() {
     return (
         <section
             id="projects"
-            className="scroll-mt-32 px-5 py-24 sm:px-10 lg:scroll-mt-0 lg:px-16 lg:py-32"
+            className="scroll-mt-32 px-5 py-24 sm:px-10 lg:scroll-mt-0 lg:px-16 lg:py-20"
         >
             <div className="mx-auto max-w-6xl">
                 <p className="text-xs font-medium uppercase tracking-[0.3em] text-sky-300 sm:text-sm">
@@ -17,6 +19,14 @@ export default function Projects() {
                     Select a project star to explore the decisions, technologies
                     and challenges behind the finished application.
                 </p>
+                <div className="mt-14 grid place-items-center sm:mt-10">
+                    {projects.map((project) => (
+                        <ProjectStar 
+                            key={project.id} 
+                            project={project} 
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );
