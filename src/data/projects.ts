@@ -54,7 +54,7 @@ export const projects: Project[] = [
             "Animated testimonial carousel",
             "Responsive desktop and mobile navigation",
             "Smooth anchor navigation across routes",
-            "Accessible form feedback amd dialog interactions",
+            "Accessible form feedback and dialog interactions",
             "Dark, editorial-inspired interface",
         ],
 
@@ -69,6 +69,13 @@ export const projects: Project[] = [
                     "shadcn/ui",
                     "Framer Motion",
                     "Lucide React",
+                ],
+            },
+            {
+                category: "Forms and validation",
+                items: [
+                    "React Hook Form",
+                    "Zod",
                 ],
             },
             {
