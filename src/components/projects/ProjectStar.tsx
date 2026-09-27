@@ -26,10 +26,7 @@ export default function ProjectStar({
     const projectRef = useRef<HTMLElement>(null);
 
     const handleToggle = () => {
-        if (isActive) {
-            setSelectedFragment(null);
-        }
-
+        setSelectedFragment(null);
         onToggle();
     };
 
@@ -59,9 +56,13 @@ export default function ProjectStar({
                 "(prefers-reduced-motion: reduce)"
             ).matches;
 
+            const isDesktop = window.matchMedia(
+                "(min-width: 1024px)"
+            ).matches;
+
             project.scrollIntoView({
                 behavior: prefersReducedMotion ? "auto" : "smooth",
-                block: "center",
+                block: isDesktop ? "center" : "start",
             });
         }, 500);
 
@@ -79,7 +80,7 @@ export default function ProjectStar({
                     ease: [0.22, 1, 0.36, 1],
                 },
             }}
-            className={`relative flex w-full flex-col items-center ${
+            className={`relative flex w-full scroll-mt-32 flex-col items-center sm:scroll-mt-36 lg:scroll-mt-0 ${
                 isActive ? "lg:min-h-136" : "lg:min-h-0"
             }`}
         >
@@ -160,7 +161,7 @@ export default function ProjectStar({
                 onSelectFragment={setSelectedFragment}
             />
             <AnimatePresence>
-                {selectedFragment && (
+                {isActive && selectedFragment && (
                     <ProjectDetails 
                         project={project}
                         selectedFragment={selectedFragment}
