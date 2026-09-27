@@ -136,6 +136,95 @@ export const projects: Project[] = [
         ],
     },
 
+    // weather forecast app
+    {
+        id: "weather-forecast",
+        name: "Weather Forecast",
+        icon: "/projects/weather/icon.png",
+
+        shortSummary:
+            "A responsive weather app with five-day forecasts, weather-based activities and Spotify music recommendations.",
+        
+        description: [
+            "Weather Forecast is a responsive application that combines real-time weather data with personalised activity and music recommendations.",
+            "Users can search for a location to view current conditions and a five-day forecast, alongside activity suggestions and Spotify tracks tailored to the current weather.",
+            "The project focuses on transforming external API data, creating contextual recommendations and adapting both the interface and its visual theme to changing weather conditions.",
+        ],
+
+        features: [
+            "Location-based current weather data",
+            "Five-day weather forecast",
+            "Daily minimum and maximum temperatures",
+            "Current temperature, condition and feels-like temperature",
+            "Humidity and wind speed information",
+            "Weather-based activity suggestions",
+            "Weather-based music recommendations",
+            "Embedded Spotify track previews",
+            "Dynamic background themes based on weather conditions",
+            "Rotating recommendations across repeated searches",
+            "Parallel weather and forecast requests",
+            "Responsive mobile forecast carousel",
+            "Loading and search states",
+            "Empty-search validation",
+            "Clear invalid-location feedback",
+            "Responsive layouts across mobile, tablet and desktop",
+            "Accessible labels and feedback",
+        ],
+
+        technologies: [
+            {
+                category: "Frontend",
+                items: [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Lucide React",
+                ],
+            },
+            {
+                category: "APIs and integrations",
+                items: [
+                    "OpenWeather API",
+                    "Spotify Embeds",
+                ],
+            },
+        ],
+
+        challenge: {
+            title:
+                "Transforming three-hour readings into useful daily forecasts",
+
+            description:
+                "The main technical challenge was transforming OpenWeather's three-hour forecast readings into a clear five-day forecast. The readings needed to be grouped by local calendar day, used to calculate minimum and maximum temperatures and reduced to one representative weather condition without allowing an overnight reading to misrepresent the entire day.",
+
+            takeaway:
+                "This taught me to treat third-party API responses as raw data rather than interface-ready content, create a dedicated transformation layer and provide components with a predictable data structure. Selecting the reading closest to midday also produced a more useful representation of each day's expected weather.",
+        },
+
+        liveUrl: "https://ss-weather-app.vercel.app/",
+        githubUrl: "https://github.com/SobiahSelvarajah/ss-weather-app",
+
+        screenshots: [
+            {
+                src: "/projects/weather/search-desktop.png",
+                alt: "Weather Forecast desktop search page before a location is selected",
+            },
+            {
+                src: "/projects/weather/forecast-desktop.png",
+                alt: "Weather Forecast desktop results showing the five-day forecast, current conditions, activities and music recommendations",
+            },
+            {
+                src: "/projects/weather/dynamic-tablet.png",
+                alt: "Weather Forecast tablet layout with a dynamic theme based on clear weather",
+            },
+            {
+                src: "/projects/weather/forecast-mobile.png",
+                alt: "Weather Forecast mobile layout with horizontally navigable daily forecasts",
+            },
+        ],
+    },
+
     // kiln and clay app
     {
         id: "kiln-and-clay",
