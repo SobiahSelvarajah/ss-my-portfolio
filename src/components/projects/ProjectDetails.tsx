@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import type { ProjectFragmentId } from "@/data/projectFragments";
+import type { Project } from "@/data/projects";
+import ProjectDetailContent from "./ProjectDetailContent";
 
 type ProjectDetailsProps = {
-    projectName: string;
+    project: Project;
     selectedFragment: ProjectFragmentId;
     onClose: () => void;
 };
@@ -19,17 +21,18 @@ const fragmentTitles: Record<ProjectFragmentId, string> = {
 };
 
 export default function ProjectDetails({
-    projectName,
+    project,
     selectedFragment,
     onClose,
 }: ProjectDetailsProps) {
     const title = fragmentTitles[selectedFragment];
+    const titleId = `${project.id}-details-title`;
 
     return (
         <motion.section
             role="dialog"
             aria-modal="true"
-            aria-labelledby="project-details-title"
+            aria-labelledby={titleId}
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
@@ -42,10 +45,10 @@ export default function ProjectDetails({
             <header className="flex items-start justify-between gap-6">
                 <div>
                     <p className="text-xs font-medium uppercase tracking-[0.3em] text-sky-300">
-                        {projectName}
+                        {project.name}
                     </p>
                     <h2
-                        id="project-details-title"
+                        id={titleId}
                         className="mt-3 text-3xl font-semibold text-white sm:text-4xl"
                     >
                         {title}
@@ -65,9 +68,10 @@ export default function ProjectDetails({
             </header>
 
             <div className="mt-10">
-                <p className="text-base leading-7 text-white/60">
-                    The {title.toLowerCase()} content will appear here.
-                </p>
+                <ProjectDetailContent
+                    project={project}
+                    selectedFragment={selectedFragment}
+                />
             </div>
         </motion.section>
     );

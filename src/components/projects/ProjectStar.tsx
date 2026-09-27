@@ -162,7 +162,7 @@ export default function ProjectStar({
             <AnimatePresence>
                 {selectedFragment && (
                     <ProjectDetails 
-                        projectName={project.name}
+                        project={project}
                         selectedFragment={selectedFragment}
                         onClose={() => setSelectedFragment(null)}
                     />
