@@ -24,19 +24,33 @@ export default function Projects() {
                     Select a project star to explore the decisions, technologies
                     and challenges behind the finished application.
                 </p>
-                <div className="mt-14 grid place-items-center sm:mt-10">
-                    {projects.map((project) => (
-                        <ProjectStar 
-                            key={project.id} 
-                            project={project} 
-                            isActive={activeProjectId === project.id}
-                            onToggle={() =>
-                                setActiveProjectId((currentId) =>
-                                    currentId === project.id ? null : project.id
-                                )
-                            }
-                        />
-                    ))}
+                <div className="mt-14 grid items-start gap-x-10 gap-y-20 sm:mt-10 lg:grid-cols-2">
+                    {projects.map((project) => {
+                        const isActive = activeProjectId === project.id;
+
+                        return (
+                            <div
+                                key={project.id}
+                                className={`w-full ${
+                                    isActive
+                                        ? "lg:col-span-2 lg:row-start-1"
+                                        : ""
+                                }`}
+                            >
+                                <ProjectStar
+                                    project={project}
+                                    isActive={isActive}
+                                    onToggle={() =>
+                                        setActiveProjectId((currentId) =>
+                                            currentId === project.id
+                                                ? null
+                                                : project.id
+                                        )
+                                    }
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
