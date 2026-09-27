@@ -29,6 +29,7 @@ export type Project = {
 
 
 export const projects: Project[] = [
+    // bookdrop app
     {
         id: "bookdrop",
         name: "BookDrop",
@@ -131,6 +132,116 @@ export const projects: Project[] = [
             {
                 src: "/projects/bookdrop/testimonials.png",
                 alt: "BookDrop animated reader testimonial section",
+            },
+        ],
+    },
+
+    // kiln and clay app
+    {
+        id: "kiln-and-clay",
+        name: "Kiln & Clay",
+        icon: "/projects/kiln-and-clay/icon.png",
+
+        shortSummary:
+            "A full-stack pottery studio discovery and booking app with live availability, capacity-aware reservations and automated confirmation emails.",
+        
+        description: [
+            "Kiln & Clay is a full-stack discovery and booking platform that allows users to explore independent pottery studios across London and reserve available studio sessions.",
+            "Users can browse studio locations, explore featured pottery classes, view upcoming availability through an interactive calendar and book sessions based on the remaining capacity.",
+            "The project focuses on delivering a complete booking experience with persistent data, server-side validation, automated availability management, transactional emails and responsive interfaces.",
+        ],
+
+        features: [
+            "Browse independent pottery studios across London",
+            "Filter studios by location",
+            "Image carousels for individual studios",
+            "Dedicated studio pages with information and booking availability",
+            "Interactive booking calendar",
+            "Morning, afternoon and evening session selection",
+            "Remaining-space calculations based on existing bookings",
+            "Automatic disabling of fully booked sessions",
+            "Automatic disabling of dates with no remaining availability",
+            "Rolling 60-day booking window",
+            "Multi-guest bookings",
+            "Server-side booking validation",
+            "Booking confirmation emails",
+            "Automatic availability refresh after successful bookings",
+            "Reusable featured pottery class cards",
+            "Detailed featured class dialogs",
+            "Contact form with database persistence",
+            "Contact confirmation emails",
+            "Loading, success and error states",
+            "Responsive layouts across mobile, tablet and desktop",
+        ],
+
+        technologies: [
+            {
+                category: "Frontend",
+                items: [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "shadcn/ui",
+                    "Base UI",
+                    "Lucide React",
+                ],
+            },
+            {
+                category: "Backend and database",
+                items: [
+                    "Next.js Route Handlers",
+                    "Prisma ORM",
+                    "PostgreSQL",
+                ],
+            },
+            {
+                category: "Services and integrations",
+                items: [
+                    "Resend",
+                    "React Email",
+                ],
+            },
+        ],
+
+        challenge: {
+            title:
+                "Keeping session availability accurate throughout the booking flow",
+            
+            description:
+                "The main technical challenge was coordinating generated future sessions, existing reservations and per-session capacity without allowing users to book more places than were available. Availability needed to remain accurate on both the interface and the server, including after a successful booking changed the remaining capacity.",
+
+            takeaway:
+                "This taught me to treat server-side capacity checks as the source of truth, derive availability from persisted booking data and refresh client-facing information after mutations so that the interface continues to reflect the database accurately.",
+        },
+
+        liveUrl: "https://ss-pottery-class-booking.vercel.app/",
+        githubUrl: "https://github.com/SobiahSelvarajah/ss-pottery-class-booking",
+
+        screenshots: [
+            {
+                src: "/projects/kiln-and-clay/home-desktop.png",
+                alt: "Kiln and Clay desktop landing page introducing pottery classes",
+            },
+            {
+                src: "/projects/kiln-and-clay/studios.png",
+                alt: "Kiln and Clay pottery studio directory",
+            },
+            {
+                src: "/projects/kiln-and-clay/class-details.png",
+                alt: "Kiln and Clay featured pottery class details dialog",
+            },
+            {
+                src: "/projects/kiln-and-clay/booking-calendar.png",
+                alt: "Kiln and Clay booking calendar and session selection",
+            },
+            {
+                src: "/projects/kiln-and-clay/booking-success-mobile.png",
+                alt: "Successful Kiln and Clay booking confirmation on mobile",
+            },
+            {
+                src: "/projects/kiln-and-clay/contact-tablet.png",
+                alt: "Kiln and Clay contact page displayed at tablet size",
             },
         ],
     },
