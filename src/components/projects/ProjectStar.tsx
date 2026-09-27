@@ -30,6 +30,7 @@ export default function ProjectStar({
         onToggle();
     };
 
+    // close details with the Escape key
     useEffect(() => {
         if (!selectedFragment) return;
 
@@ -43,6 +44,26 @@ export default function ProjectStar({
 
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [selectedFragment]);
+
+    // close project fragments when out of view
+    useEffect(() => {
+        if (!isActive) return;
+
+        const project = projectRef.current;
+
+        if (!project) return;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) {
+                setSelectedFragment(null);
+                onToggle();
+            }
+        });
+
+        observer.observe(project);
+
+        return () => observer.disconnect();
+    }, [isActive, onToggle]);
 
     useEffect(() => {
         if (!isActive) return;
