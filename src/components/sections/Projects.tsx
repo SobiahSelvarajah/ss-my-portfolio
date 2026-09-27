@@ -25,8 +25,13 @@ export default function Projects() {
                     and challenges behind the finished application.
                 </p>
                 <div className="mt-14 grid items-start gap-x-10 gap-y-20 sm:mt-10 lg:grid-cols-2">
-                    {projects.map((project) => {
+                    {projects.map((project, index) => {
                         const isActive = activeProjectId === project.id;
+
+                        const isLastUnpairedProject =
+                            !activeProjectId &&
+                            projects.length % 2 !== 0 &&
+                            index === projects.length - 1;
 
                         return (
                             <div
@@ -34,7 +39,9 @@ export default function Projects() {
                                 className={`w-full ${
                                     isActive
                                         ? "lg:col-span-2 lg:row-start-1"
-                                        : ""
+                                        : isLastUnpairedProject
+                                            ? "lg:col-span-2"
+                                            : ""
                                 }`}
                             >
                                 <ProjectStar
