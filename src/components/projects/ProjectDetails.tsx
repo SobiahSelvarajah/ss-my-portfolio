@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import type { ProjectFragmentId } from "@/data/projectFragments";
@@ -28,6 +29,16 @@ export default function ProjectDetails({
     const title = fragmentTitles[selectedFragment];
     const titleId = `${project.id}-details-title`;
 
+    useEffect(() => {
+        const originalOverflow = document.body.style.overflow;
+
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, []);
+    
     return (
         <>
             <motion.div
@@ -48,7 +59,7 @@ export default function ProjectDetails({
                     duration: 0.35,
                     ease: [0.22, 1, 0.36, 1],
                 }}
-                className="fixed inset-x-5 bottom-5 top-32 z-60 overflow-y-auto rounded-2xl border border-white/10 bg-slate-950/95 p-0 shadow-[0_0_80px_rgba(125,211,252,0.15)] backdrop-blur-xl sm:inset-x-10 lg:inset-x-auto lg:bottom-10 lg:left-74 lg:right-10 lg:top-10"
+                className="fixed inset-x-5 bottom-5 top-32 z-60 overscroll-contain overflow-y-auto rounded-2xl border border-white/10 bg-slate-950/95 p-0 shadow-[0_0_80px_rgba(125,211,252,0.15)] backdrop-blur-xl sm:inset-x-10 lg:inset-x-auto lg:bottom-10 lg:left-74 lg:right-10 lg:top-10"
             >
                 <header className="sticky top-0 z-10 flex items-start justify-between gap-6 border-b border-white/10 bg-slate-950/95 px-6 py-6 backdrop-blur-xl sm:px-8 sm:py-8 lg:px-10 lg:py-10">
                     <div>
