@@ -3,9 +3,40 @@ import Navbar from "@/components/layout/Navbar";
 import StarBackground from "@/components/layout/StarBackground";
 import "./globals.css";
 
+const title =
+  "Sobiah Selvarajah | Junior Full-Stack Developer";
+
+const description =
+  "Portfolio of Sobiah Selvarajah, a junior full-stack developer building responsive, accessible web applications with React, Next.js and TypeScript."
+
 export const metadata: Metadata = {
-  title: "Sobiah's Portfolio",
-  description: "Includes main projects, skillset and resume",
+  title,
+  description,
+  authors: [
+    {
+      name: "Sobiah Selvarajah"
+    },
+  ],
+  creator: "Sobiah Selvarajah",
+  keywords: [
+    "Sobiah Selvarajah",
+    "Junior Full-Stack Developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Portfolio,"
+  ],
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    siteName: "Sobiah Selvarajah Portfolio",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -18,6 +49,7 @@ export default function RootLayout({
       <body>
         <StarBackground />
         <Navbar />
+        
         <main className="lg:ml-64">
           {children}
         </main>
