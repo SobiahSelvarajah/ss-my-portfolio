@@ -48,9 +48,9 @@ export default function ProjectDetails({
                     duration: 0.35,
                     ease: [0.22, 1, 0.36, 1],
                 }}
-                className="fixed inset-x-5 bottom-5 top-32 z-60 overflow-y-auto rounded-2xl border border-white/10 bg-slate-950/95 p-6 shadow-[0_0_80px_rgba(125,211,252,0.15)] backdrop-blur-xl sm:inset-x-10 sm:p-8 lg:inset-x-auto lg:bottom-10 lg:left-74 lg:right-10 lg:top-10 lg:p-10"
+                className="fixed inset-x-5 bottom-5 top-32 z-60 overflow-y-auto rounded-2xl border border-white/10 bg-slate-950/95 p-0 shadow-[0_0_80px_rgba(125,211,252,0.15)] backdrop-blur-xl sm:inset-x-10 lg:inset-x-auto lg:bottom-10 lg:left-74 lg:right-10 lg:top-10"
             >
-                <header className="flex items-start justify-between gap-6">
+                <header className="sticky top-0 z-10 flex items-start justify-between gap-6 border-b border-white/10 bg-slate-950/95 px-6 py-6 backdrop-blur-xl sm:px-8 sm:py-8 lg:px-10 lg:py-10">
                     <div>
                         <p className="text-xs font-medium uppercase tracking-[0.3em] text-sky-300">
                             {project.name}
@@ -75,7 +75,7 @@ export default function ProjectDetails({
                     </button>
                 </header>
 
-                <div className="mt-10">
+                <div className="p-6 pt-10 sm:p-8 sm:pt-10 lg:p-10 lg:pt-10">
                     <ProjectDetailContent
                         project={project}
                         selectedFragment={selectedFragment}
