@@ -10,11 +10,16 @@ const description =
   "Portfolio of Sobiah Selvarajah, a junior full-stack developer building responsive, accessible web applications with React, Next.js and TypeScript."
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sobiah.com"),
   title,
   description,
+  alternates: {
+    canonical: "/",
+  },
   authors: [
     {
-      name: "Sobiah Selvarajah"
+      name: "Sobiah Selvarajah",
+      url: "/",
     },
   ],
   creator: "Sobiah Selvarajah",
